@@ -29,7 +29,7 @@ export default function Header({ onMobileMenuToggle }) {
                 </button>
                 <div className="header-title-section">
                     <div className="header-breadcrumb">
-                        <span>ERP Error404</span>
+                        <span>AMS</span>
                         <span className="breadcrumb-sep">/</span>
                         <span className="breadcrumb-active">{currentPage.breadcrumb}</span>
                     </div>

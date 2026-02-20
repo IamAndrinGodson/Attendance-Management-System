@@ -242,7 +242,7 @@ export default function Login() {
 
                 <div className="login-header">
                     <h1 className="login-title">{tab === 'login' ? 'Welcome Back' : 'Create Account'}</h1>
-                    <p className="login-subtitle">ERP Error404 — College Management</p>
+                    <p className="login-subtitle">AMS — College Management</p>
                 </div>
 
                 {/* Tab switcher */}

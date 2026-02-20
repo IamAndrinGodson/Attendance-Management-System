@@ -62,7 +62,7 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
                         <span className="sidebar-logo-text">A</span>
                     </div>
                     <div className="sidebar-brand">
-                        <h1>ERP Error404</h1>
+                        <h1>AMS</h1>
                         <span>Student Management</span>
                     </div>
                 </div>
