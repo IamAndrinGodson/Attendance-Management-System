@@ -199,6 +199,11 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* Footer */}
+            <footer className="dashboard-footer">
+                A Project by <span className="dashboard-footer-brand">Error404</span>
+            </footer>
         </div>
     );
 }
