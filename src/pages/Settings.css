@@ -1,0 +1,164 @@
+/* ===== Settings Page ===== */
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+}
+
+.settings-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.settings-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    border-bottom: 1px solid var(--border-secondary);
+}
+
+.settings-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--accent-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.settings-card-title {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.settings-card-desc {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+}
+
+.settings-card-body {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Working Days */
+.working-days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.working-day-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.working-day-btn:hover {
+    border-color: var(--border-accent);
+}
+
+.working-day-btn.active {
+    background: var(--accent-subtle);
+    border-color: var(--border-accent);
+}
+
+.working-day-name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Toggle */
+.toggle-track {
+    width: 40px;
+    height: 22px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    position: relative;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.toggle-track.on {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    background: white;
+    transition: transform var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.toggle-track.on .toggle-thumb {
+    transform: translateX(18px);
+}
+
+/* Toggle Rows */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-secondary);
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.toggle-row:last-child {
+    border-bottom: none;
+}
+
+.toggle-row:hover {
+    opacity: 0.9;
+}
+
+.toggle-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.toggle-desc {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}

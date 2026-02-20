@@ -1,0 +1,210 @@
+/* ===== Students Page ===== */
+.students-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.page-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.page-heading {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.page-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
+    margin-top: 2px;
+}
+
+.page-top-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-shrink: 0;
+}
+
+/* Filter Chips */
+.students-filters {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-chip:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.filter-chip.active {
+    background: var(--accent-muted);
+    border-color: var(--border-accent);
+    color: var(--accent-primary);
+}
+
+.filter-count {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    background: var(--surface-hover);
+    padding: 1px 7px;
+    border-radius: var(--radius-full);
+}
+
+.filter-chip.active .filter-count {
+    background: rgba(6, 182, 212, 0.2);
+}
+
+/* Student Cell */
+.student-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.student-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.student-avatar--active {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.student-avatar--warning {
+    background: linear-gradient(135deg, var(--warning), #d97706);
+}
+
+.student-avatar--danger {
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+}
+
+.student-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.student-roll {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* Attendance Cell */
+.attendance-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.attendance-bar-bg {
+    width: 60px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    overflow: hidden;
+}
+
+.attendance-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s ease;
+}
+
+.attendance-bar-fill.good {
+    background: var(--success);
+}
+
+.attendance-bar-fill.warning {
+    background: var(--warning);
+}
+
+.attendance-bar-fill.danger {
+    background: var(--danger);
+}
+
+.attendance-val {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    min-width: 36px;
+}
+
+.attendance-val.good {
+    color: var(--success);
+}
+
+.attendance-val.warning {
+    color: var(--warning);
+}
+
+.attendance-val.danger {
+    color: var(--danger);
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-badge--active {
+    background: var(--success-muted);
+    color: var(--success);
+}
+
+.status-badge--warning {
+    background: var(--warning-muted);
+    color: var(--warning);
+}
+
+.status-badge--danger {
+    background: var(--danger-muted);
+    color: var(--danger);
+}
+
+@media (max-width: 768px) {
+    .page-top {
+        flex-direction: column;
+    }
+
+    .page-top-actions {
+        width: 100%;
+    }
+
+    .page-top-actions .btn {
+        flex: 1;
+    }
+}

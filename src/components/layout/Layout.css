@@ -1,0 +1,56 @@
+/* ===== Layout Styles ===== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.layout-main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: margin-left var(--transition-base);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.layout-main.sidebar-collapsed {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+.layout-content {
+    flex: 1;
+    padding: var(--space-2xl);
+    animation: pageEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+        filter: blur(3px);
+    }
+
+    50% {
+        filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+    }
+}
+
+@media (max-width: 768px) {
+    .layout-main {
+        margin-left: 0 !important;
+    }
+
+    .layout-content {
+        padding: var(--space-lg);
+    }
+}

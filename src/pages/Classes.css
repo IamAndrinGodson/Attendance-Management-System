@@ -1,0 +1,211 @@
+/* ===== Classes Page ===== */
+.classes-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.classes-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.class-stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.class-stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.class-stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    font-weight: 500;
+    margin-top: var(--space-xs);
+}
+
+/* Class Cards Grid */
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-xl);
+}
+
+.class-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.class-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.class-card-accent {
+    height: 4px;
+    width: 100%;
+}
+
+.class-card-body {
+    padding: var(--space-xl);
+}
+
+.class-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.class-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.class-card-attendance {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.class-card-rate {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.class-card-rate-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.class-card-name {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.class-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.class-detail {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.detail-icon {
+    font-size: var(--font-size-sm);
+    width: 20px;
+    text-align: center;
+}
+
+.class-card-progress {
+    margin-top: auto;
+}
+
+.class-progress-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    overflow: hidden;
+}
+
+.class-progress-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Detail Modal */
+.class-detail-modal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.class-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+.class-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.class-detail-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.class-detail-value {
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.class-detail-attendance {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.class-detail-bar {
+    flex: 1;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    overflow: hidden;
+}
+
+.class-detail-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s ease;
+}
+
+@media (max-width: 768px) {
+    .classes-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .classes-grid {
+        grid-template-columns: 1fr;
+    }
+}

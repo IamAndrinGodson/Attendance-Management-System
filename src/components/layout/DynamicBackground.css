@@ -1,0 +1,117 @@
+/* ===== Dynamic Background ===== */
+.dynamic-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    pointer-events: none;
+}
+
+/* Moving Grid */
+.bg-grid {
+    position: absolute;
+    inset: -50px;
+    /* Oversize to allow panning without clipping */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center stretch;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    animation: gridMove 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+/* Fluid Blabs */
+.bg-blobs {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    animation: blobMove 25s ease-in-out infinite alternate;
+    transform-origin: center;
+}
+
+.bg-blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: var(--accent-primary);
+    animation-duration: 25s;
+}
+
+.bg-blob-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: var(--accent-secondary);
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.bg-blob-3 {
+    top: 30%;
+    right: 20%;
+    width: 40vw;
+    height: 40vw;
+    background: var(--success);
+    animation-duration: 22s;
+    animation-delay: -10s;
+}
+
+.bg-blob-4 {
+    bottom: 10%;
+    left: 20%;
+    width: 45vw;
+    height: 45vw;
+    background: var(--info);
+    animation-duration: 28s;
+    animation-delay: -15s;
+}
+
+@keyframes blobMove {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(8vw, -10vh) scale(1.2) rotate(90deg);
+    }
+
+    66% {
+        transform: translate(-10vw, 12vh) scale(0.9) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(5vw, 5vh) scale(1.1) rotate(270deg);
+    }
+}
+
+/* Optional subtle noise overlay to prevent color banding */
+.bg-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
