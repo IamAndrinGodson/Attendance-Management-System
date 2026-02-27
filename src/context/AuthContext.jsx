@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext(null);
 
@@ -85,6 +86,46 @@ export function AuthProvider({ children }) {
         setEmailVerified(true); // already done OTP
     };
 
+    /**
+     * Google Sign-In — decode the JWT credential and auto-register + login.
+     */
+    const googleLogin = (credentialResponse) => {
+        try {
+            const decoded = jwtDecode(credentialResponse.credential);
+            const { name, email, picture, sub } = decoded;
+            const avatar = name
+                .trim()
+                .split(' ')
+                .map(n => n[0])
+                .join('')
+                .toUpperCase()
+                .slice(0, 2);
+
+            const newUser = {
+                email,
+                password: `google_${sub}`, // internal placeholder
+                name,
+                role: 'Student', // default role for Google sign-ins
+                avatar,
+                picture, // Google profile picture URL
+            };
+
+            const existing = getRegisteredUsers();
+            const updated = existing.filter(
+                u => u.email.toLowerCase() !== email.toLowerCase()
+            );
+            saveRegisteredUsers([...updated, newUser]);
+
+            const { password: _, ...userData } = newUser;
+            setUser(userData);
+            setEmailVerified(true); // Google already verified the email
+            return { success: true };
+        } catch (err) {
+            console.error('Google login failed:', err);
+            return { success: false, error: 'Failed to process Google sign-in' };
+        }
+    };
+
     const logout = () => {
         setUser(null);
         setEmailVerified(false);
@@ -98,6 +139,7 @@ export function AuthProvider({ children }) {
         <AuthContext.Provider value={{
             user,
             login,
+            googleLogin,
             logout,
             register,
             isLoading,
