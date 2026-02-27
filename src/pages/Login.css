@@ -515,6 +515,28 @@
     color: var(--text-muted);
 }
 
+/* Google Sign-In */
+.login-google-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0 var(--space-md);
+}
+
+.login-google-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-google-wrapper > div {
+    width: 100% !important;
+}
+
+.login-google-wrapper iframe {
+    border-radius: var(--radius-md) !important;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .login-card {

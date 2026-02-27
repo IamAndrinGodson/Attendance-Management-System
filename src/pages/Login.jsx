@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../context/AuthContext';
 import { generateCode, sendVerificationCode } from '../services/emailService';
 import './Login.css';
@@ -12,7 +13,8 @@ const demoAccounts = [
 
 // ─── Sign Up OTP panel ────────────────────────────────────────────────────────
 function SignupPanel({ onSuccess }) {
-    const { register } = useAuth();
+    const { register, googleLogin } = useAuth();
+    const navigate = useNavigate();
     const [step, setStep] = useState('form'); // 'form' | 'otp' | 'done'
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -201,6 +203,27 @@ function SignupPanel({ onSuccess }) {
                     </span>
                 ) : '📩 Send Verification Code'}
             </button>
+
+            <div className="login-google-divider">
+                <div className="login-divider-line" />
+                <span className="login-divider-text">or</span>
+                <div className="login-divider-line" />
+            </div>
+
+            <div className="login-google-wrapper">
+                <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                        const result = googleLogin(credentialResponse);
+                        if (result.success) navigate('/', { replace: true });
+                    }}
+                    onError={() => setError('Google sign-in failed. Please try again.')}
+                    text="continue_with"
+                    shape="rectangular"
+                    theme="filled_black"
+                    size="large"
+                    width="100%"
+                />
+            </div>
         </form>
     );
 }
@@ -212,7 +235,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
-    const { login, isLoading } = useAuth();
+    const { login, googleLogin, isLoading } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -315,6 +338,28 @@ export default function Login() {
                                 </span>
                             ) : 'Sign In'}
                         </button>
+
+                        <div className="login-google-divider">
+                            <div className="login-divider-line" />
+                            <span className="login-divider-text">or continue with</span>
+                            <div className="login-divider-line" />
+                        </div>
+
+                        <div className="login-google-wrapper">
+                            <GoogleLogin
+                                onSuccess={(credentialResponse) => {
+                                    const result = googleLogin(credentialResponse);
+                                    if (result.success) navigate('/', { replace: true });
+                                    else setError(result.error);
+                                }}
+                                onError={() => setError('Google sign-in failed. Please try again.')}
+                                text="signin_with"
+                                shape="rectangular"
+                                theme="filled_black"
+                                size="large"
+                                width="100%"
+                            />
+                        </div>
                     </form>
                 ) : (
                     <SignupPanel onSuccess={() => navigate('/', { replace: true })} />
