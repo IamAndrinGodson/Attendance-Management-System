@@ -396,7 +396,10 @@ export default function Login() {
 
                 <div className="login-footer">
                     © 2026 Greenwood Institute of Technology
-                    <div style={{ marginTop: '0.5rem', opacity: 0.8 }}>A Project by Error404</div>
+                    <div className="error404-footer">
+                        <span>A Project by</span>
+                        <span className="error404-brand">Error404</span>
+                    </div>
                 </div>
             </div>
         </div>
