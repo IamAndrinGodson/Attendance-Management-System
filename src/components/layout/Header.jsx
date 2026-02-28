@@ -10,9 +10,13 @@ const pageTitles = {
     '/settings': { title: 'Settings', breadcrumb: 'Configuration' },
 };
 
+import { useTheme } from '../../context/ThemeContext';
+import { Sun, Moon } from 'lucide-react';
+
 export default function Header({ onMobileMenuToggle }) {
     const location = useLocation();
     const currentPage = pageTitles[location.pathname] || { title: 'Page', breadcrumb: '' };
+    const { theme, toggleTheme } = useTheme();
 
     const today = new Date().toLocaleDateString('en-US', {
         weekday: 'short',
@@ -46,6 +50,14 @@ export default function Header({ onMobileMenuToggle }) {
                 <div className="header-date">
                     📅 {today}
                 </div>
+
+                <button
+                    className="header-icon-btn tilt-hover"
+                    onClick={toggleTheme}
+                    title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                >
+                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
 
                 <button className="header-icon-btn" title="Notifications">
                     🔔

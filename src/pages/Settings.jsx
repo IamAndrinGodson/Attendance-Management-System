@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../components/shared/Button';
 import { useToast } from '../components/shared/Toast';
+import { useTheme } from '../context/ThemeContext';
 import './Settings.css';
 
 export default function Settings() {
@@ -11,7 +12,7 @@ export default function Settings() {
     const [notifyParents, setNotifyParents] = useState(true);
     const [notifyTeachers, setNotifyTeachers] = useState(true);
     const [weeklyReport, setWeeklyReport] = useState(true);
-    const [darkMode, setDarkMode] = useState(true);
+    const { theme, toggleTheme } = useTheme();
     const [saved, setSaved] = useState(false);
     const toast = useToast();
 
@@ -184,6 +185,28 @@ export default function Settings() {
                                 <div className="toggle-desc">Auto-generate and send weekly attendance reports</div>
                             </div>
                             <span className={`toggle-track ${weeklyReport ? 'on' : ''}`}>
+                                <span className="toggle-thumb"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Appearance */}
+                <div className="settings-card animate-fade-in stagger-5">
+                    <div className="settings-card-header">
+                        <span className="settings-card-icon">🎨</span>
+                        <div>
+                            <h3 className="settings-card-title">Appearance</h3>
+                            <p className="settings-card-desc">Customize system look and feel</p>
+                        </div>
+                    </div>
+                    <div className="settings-card-body">
+                        <div className="toggle-row" onClick={toggleTheme}>
+                            <div>
+                                <div className="toggle-title">Dark Mode</div>
+                                <div className="toggle-desc">Use dark theme across the application</div>
+                            </div>
+                            <span className={`toggle-track ${theme === 'dark' ? 'on' : ''}`}>
                                 <span className="toggle-thumb"></span>
                             </span>
                         </div>
